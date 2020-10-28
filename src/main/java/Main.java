@@ -13,7 +13,7 @@ import java.util.Objects;
 
 
 public class Main {
-    private static final String URL = "http://localhost:8081";
+    private static final String URL = "http://10.97.80.29:8087";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final HttpHeaders headers = new HttpHeaders();
     private static final HttpEntity<Object> headersEntity = new HttpEntity<>(headers);
