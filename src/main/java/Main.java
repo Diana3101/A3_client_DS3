@@ -3,6 +3,7 @@ import com.google.gson.GsonBuilder;
 import entities.*;
 import entities.dto.CreateOrderDTO;
 import entities.dto.ServeDTO;
+import entities.dto.ThingsDTO;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
 
 
 public class Main {
-    private static final String URL = "http://10.97.80.29:8087";
+    private static final String URL = "http://localhost:8087";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final HttpHeaders headers = new HttpHeaders();
     private static final HttpEntity<Object> headersEntity = new HttpEntity<>(headers);
@@ -22,7 +23,7 @@ public class Main {
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        Seller seller1 = new Seller("Dasha", "Orlova");
+        Seller seller1 = new Seller("Masha11111111111111", "Orl");
         List<Thing> addedThings = createThingList(seller1);
         List<Integer> quantities = Arrays.asList(1,2,3,4,5);
 
@@ -30,20 +31,20 @@ public class Main {
         addThingsOnSite(seller1, addedThings, quantities);
 
         //get things from DB
-        ResponseEntity<Thing[]> response2 = restTemplate
-                .exchange(URL + "/things", HttpMethod.GET, headersEntity, Thing[].class);
-        List<Thing> things = Arrays.asList(Objects.requireNonNull(response2.getBody()));
+        ResponseEntity<ThingsDTO> response2 = restTemplate
+                .exchange(URL + "/things", HttpMethod.GET, headersEntity, ThingsDTO.class);
+        List<Thing> things = Objects.requireNonNull(response2.getBody()).getThings();
         System.out.println(things);
 
         //get things from DB
          response2 = restTemplate
-                 .exchange(URL + "/things", HttpMethod.GET, headersEntity, Thing[].class);
-        List<Thing> thingsForSale = Arrays.asList(Objects.requireNonNull(response2.getBody()));
+                 .exchange(URL + "/things", HttpMethod.GET, headersEntity, ThingsDTO.class);
+        List<Thing> thingsForSale = Objects.requireNonNull(response2.getBody()).getThings();
         System.out.println(thingsForSale);
 
 
-        Customer customer1 = new Customer( "Masha", "Driha", Size.M);
-        Customer customer2 = new Customer( "Anna", "Derek", Size.XS);
+        Customer customer1 = new Customer( "Sasha11111111111111", "Diduh", Size.M);
+        Customer customer2 = new Customer( "Cris11111111111111", "Dktyr", Size.XS);
 
         //creating orders
         System.out.println("Trying to create new order");
@@ -56,8 +57,8 @@ public class Main {
 
         //get things from DB
         response2 = restTemplate
-                .exchange(URL + "/things", HttpMethod.GET, headersEntity, Thing[].class);
-        System.out.println(Arrays.asList(Objects.requireNonNull(response2.getBody())));
+                .exchange(URL + "/things", HttpMethod.GET, headersEntity, ThingsDTO.class);
+        System.out.println(Objects.requireNonNull(response2.getBody().getThings()));
 
         //get customers from DB
         ResponseEntity<Customer[]> response4 = restTemplate
@@ -87,11 +88,11 @@ public class Main {
 
     public static List<Thing> createThingList(Seller seller) {
 
-        Thing thing1 = new Thing("shirt", Size.M, ConditionOfThing.ideal, 30, seller);
-        Thing thing2 = new Thing("skirt", Size.S, ConditionOfThing.veryGood, 35, seller);
-        Thing thing3 = new Thing("suit", Size.S, ConditionOfThing.ideal, 100, seller);
-        Thing thing4 = new Thing("jeans", Size.M, ConditionOfThing.norm, 80, seller);
-        Thing thing5 = new Thing("dress", Size.L, ConditionOfThing.New, 57, seller);
+        Thing thing1 = new Thing("shirt11111111111111", Size.M, ConditionOfThing.ideal, 30, seller);
+        Thing thing2 = new Thing("skirt11111111111111", Size.S, ConditionOfThing.veryGood, 35, seller);
+        Thing thing3 = new Thing("suit11111111111111", Size.S, ConditionOfThing.ideal, 100, seller);
+        Thing thing4 = new Thing("jeans11111111111111", Size.M, ConditionOfThing.norm, 80, seller);
+        Thing thing5 = new Thing("dress11111111111111", Size.L, ConditionOfThing.New, 57, seller);
 
         return Arrays.asList(thing1, thing2, thing3, thing4, thing5);
     }
