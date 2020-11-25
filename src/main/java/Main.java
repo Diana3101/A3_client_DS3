@@ -23,8 +23,8 @@ public class Main {
 
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        Seller seller1 = new Seller("Masha11111111111111", "Orl");
-        List<Thing> addedThings = createThingList(seller1);
+        Seller seller1 = new Seller("Masha1", "Orl");
+        List<Thing> addedThings = createThingList();
         List<Integer> quantities = Arrays.asList(1,2,3,4,5);
 
         //added things on site
@@ -43,8 +43,8 @@ public class Main {
         System.out.println(thingsForSale);
 
 
-        Customer customer1 = new Customer( "Sasha11111111111111", "Diduh", Size.M);
-        Customer customer2 = new Customer( "Cris11111111111111", "Dktyr", Size.XS);
+        Customer customer1 = new Customer( "Sasha1", "Diduh", Size.M);
+        Customer customer2 = new Customer( "Cris1", "Dktyr", Size.XS);
 
         //creating orders
         System.out.println("Trying to create new order");
@@ -58,7 +58,6 @@ public class Main {
         //get things from DB
         response2 = restTemplate
                 .exchange(URL + "/things", HttpMethod.GET, headersEntity, ThingsDTO.class);
-        System.out.println(Objects.requireNonNull(response2.getBody().getThings()));
 
         //get customers from DB
         ResponseEntity<Customer[]> response4 = restTemplate
@@ -86,13 +85,13 @@ public class Main {
                         createOrder, Void.class);
     }
 
-    public static List<Thing> createThingList(Seller seller) {
+    public static List<Thing> createThingList() {
 
-        Thing thing1 = new Thing("shirt11111111111111", Size.M, ConditionOfThing.ideal, 30, seller);
-        Thing thing2 = new Thing("skirt11111111111111", Size.S, ConditionOfThing.veryGood, 35, seller);
-        Thing thing3 = new Thing("suit11111111111111", Size.S, ConditionOfThing.ideal, 100, seller);
-        Thing thing4 = new Thing("jeans11111111111111", Size.M, ConditionOfThing.norm, 80, seller);
-        Thing thing5 = new Thing("dress11111111111111", Size.L, ConditionOfThing.New, 57, seller);
+        Thing thing1 = new Thing("shirt1", Size.M, ConditionOfThing.ideal, 30);
+        Thing thing2 = new Thing("skirt1", Size.S, ConditionOfThing.veryGood, 35);
+        Thing thing3 = new Thing("suit1", Size.S, ConditionOfThing.ideal, 100);
+        Thing thing4 = new Thing("jeans1", Size.M, ConditionOfThing.norm, 80);
+        Thing thing5 = new Thing("dress1", Size.L, ConditionOfThing.New, 57);
 
         return Arrays.asList(thing1, thing2, thing3, thing4, thing5);
     }
@@ -102,7 +101,6 @@ public class Main {
         ServeDTO serveDTO = new ServeDTO();
         serveDTO.setSeller(seller1);
         serveDTO.setThing(addedThings);
-        //System.out.println(seller1);
         serveDTO.setThingQuantities(quantities);
         Gson gson = new GsonBuilder().disableHtmlEscaping().create();
         String serveJsonStr = gson.toJson(serveDTO);

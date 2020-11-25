@@ -29,4 +29,12 @@ public class Order {
     public void setCustomerId(UUID customerId) {
         this.customerId = customerId;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                '}';
+    }
 }
