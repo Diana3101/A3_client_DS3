@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 
 import java.util.UUID;
@@ -6,16 +6,15 @@ import java.util.UUID;
 public class Thing {
     private UUID id;
     private String name;
-    private Size size;
-    private ConditionOfThing condition;
+    private String size;
+    private String condition;
     private double price;
-//  private Seller addedBy;
 
     public Thing() {
 
     }
 
-    public Thing(String name, Size size, ConditionOfThing condition, double price) {
+    public Thing(String name, String size, String condition, double price) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.size = size;
@@ -39,19 +38,19 @@ public class Thing {
         this.name = name;
     }
 
-    public Size getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(Size size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
-    public ConditionOfThing getCondition() {
+    public String getCondition() {
         return condition;
     }
 
-    public void setCondition(ConditionOfThing condition) {
+    public void setCondition(String condition) {
         this.condition = condition;
     }
 

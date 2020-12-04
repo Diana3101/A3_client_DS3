@@ -1,7 +1,7 @@
-package entities.dto;
+package com.example.demo.entities.dto;
 
 
-import entities.OrderThing;
+import com.example.demo.entities.OrderThing;
 
 import java.util.List;
 

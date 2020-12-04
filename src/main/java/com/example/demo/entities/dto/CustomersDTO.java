@@ -1,7 +1,7 @@
-package entities.dto;
+package com.example.demo.entities.dto;
 
 
-import entities.Customer;
+import com.example.demo.entities.Customer;
 
 import java.util.List;
 
